@@ -1,1 +1,23 @@
-Sign-Up Page
+<h2>Sign-Up Page</h2>
+
+<form action="/signup" method="post">
+
+  <label for="first_name">First Name: </label>
+  <input type="text" name="user[first_name]" id="first_name" placeholder="e.g. Joe" required>
+
+  <label for="last_name">Last Name: </label>
+  <input type="text" name="user[last_name]" id="last_name" placeholder="e.g. Smith">
+
+  <label for="email">Email: </label>
+  <input type="email" name="user[email]" id="email" placeholder="e.g. JoeSmith@gmail.com" required>
+
+  <label for="password">Password: </label>
+  <input type="password" name="user[password]" id="password">
+
+  <input type="submit" value="Sign Up">
+  <h4><%= "Uh-oh! A few errors to resolve: " unless @user.errors.full_messages.empty? %></h4>
+  <ul><% @user.errors.full_messages.each do |error_string| %>
+  <li><%= error_string %></li>
+  <% end %></ul>
+
+</form>

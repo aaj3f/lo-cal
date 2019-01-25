@@ -16,4 +16,14 @@ class SessionsController < ApplicationController
     end
   end
 
+  post '/signup' do
+    @user = User.new(params[:user])
+    if already_a_user?(@user)
+      erb :signup
+
+      ##ned to process a correct submission
+
+
+  end
+
 end
