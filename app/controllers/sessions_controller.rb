@@ -18,10 +18,12 @@ class SessionsController < ApplicationController
 
   post '/signup' do
     @user = User.new(params[:user])
-    if already_a_user?(@user)
+    if @user.already_a_user? || !(@user.save)
       erb :signup
+    end
 
-      ##ned to process a correct submission
+    ## Need to build routing for correct registration; so far only error-prone registrations are accounted for
+
 
 
   end

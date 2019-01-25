@@ -26,11 +26,6 @@ class ApplicationController < Sinatra::Base
       user ||= User.find_by_id(session[:user_id]) if session[:user_id]
     end
 
-    def already_a_user?(user)
-      flag = !!User.find_by(email: user.email)
-      errors.add(:email, "already registered to an existing user.") if flag
-      flag
-    end
   end
 
 end
