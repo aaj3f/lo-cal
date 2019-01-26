@@ -1,1 +1,21 @@
-Login Page
+<h2>Login Page</h2>
+
+<form action="/login" method="post">
+
+  <label for="email">Email: </label>
+  <input type="email" name="user[email]" id="email" placeholder="e.g. JoeSmith@gmail.com">
+
+  <label for="password">Password: </label>
+  <input type="password" name="user[password]" id="password">
+
+  <input type="submit" value="Log In">
+  <br>
+  <br>
+  <% if @user || @no_user %>
+  <h4><%= "Uh-oh! A few errors to resolve: " %></h4>
+  <ul>
+    <li><%= @no_user ? "That email address is not registered to a current user." : @user.errors.full_messages.first %></li>
+  </ul>
+  <% end %>
+
+</form>
