@@ -20,6 +20,9 @@ class SessionsController < ApplicationController
     @user = User.new(params[:user])
     if @user.already_a_user? || !(@user.save)
       erb :signup
+    else
+      session[:user_id] = @user.id
+      redirect :"/users/#{@user.id}"
     end
 
     ## Need to build routing for correct registration; so far only error-prone registrations are accounted for

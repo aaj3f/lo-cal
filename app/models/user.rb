@@ -13,4 +13,5 @@ class User < ActiveRecord::Base
     errors.add(:email, "already registered to an existing user.") if flag
     flag
   end
+
 end
