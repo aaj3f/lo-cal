@@ -1,0 +1,15 @@
+<h2>Welcome, <%= @user.first_name %>.</h2>
+
+<% if @user.events.empty? %>
+<h4>You currently have not registered interest in any upcoming events.</h4>
+<h4>Please <a href="/events">visit the Events page</a> to find events you might enjoy.</h4>
+<% else %>
+<h3>Your Upcoming Events</h3>
+<% @user.events.each do |event| %>
+<h4><%= event.name %> organized by <%= event.organizer %></h4>
+<h5><%= event.date_and_time.strftime("%A, %B %e -- %H:%M") %></h5>
+<h5>Location: <%= event.location %></h5>
+<h5>Your Response: <%= Rsvp.find_by(user_id: @user.id, event_id: event.id).status %></h5>
+<p><%= event.description %></p>
+<% end %>
+<% end %>
