@@ -7,16 +7,30 @@
 <h1><%= @event.name %></h1>
 <h3><%= "#{@event.date_and_time.strftime("%A, %B %e -- %H:%M")} @ #{@event.location}" %></h3>
 <h4><%= "Organized by #{@event.organizer}" %></h4>
-
+<br>
 <!-- Want to add some control logic so that if someone has already RSVPd for this event, it shows a different form -->
-<form action="/rsvps" method="post">
+<% if current_user.events.include?(@event) %>
+<% response = Rsvp.find_by(user_id: current_user.id, event_id: @event.id).status %>
+<form action="/rsvps/<%= @event.id %>" method="post">
+  <input type="hidden" id="hidden" name="_method" value="patch">
+  Do you want to update your RSVP for this event?<br>
+  <input type="radio" name="rsvp" value="accept" <%= "checked" if response == "accept" %>>I'm going!
 
-  RSVP: <input type="submit" name="rsvp" value="I'm going!">
+  <input type="radio" name="rsvp" value="interested" <%= "checked" if response == "interested" %>>I'm interested.
 
-  <input type="submit" name="rsvp" value="I'm interested.">
-
-  <input type="submit" name="rsvp" value="I can't make it.">
+  <input type="radio" name="rsvp" value="decline" <%= "checked" if response == "decline" %>>I can't make it.
+  <input type="submit" value="Update my RSVP!">
 </form>
+<% else %>
+<form action="/rsvps" method="post">
+  <input type="hidden" id="hidden" name="event" value="<%= @event.id %>">
+  RSVP: <button type="submit" name="rsvp" value="accept">I'm going!</button>
+
+  <button type="submit" name="rsvp" value="interested">I'm interested.</button>
+
+  <button type="submit" name="rsvp" value="decline">I can't make it.</button>
+</form>
+<% end %>
 
 <br>
 <p><%= @event.description %></p>
