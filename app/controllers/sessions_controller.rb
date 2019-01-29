@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
 
   get '/login' do
     if logged_in?
-      redirect :"/events"
+      redirect :"/users/#{current_user.id}"
     else
       erb :login
     end
@@ -12,9 +12,8 @@ class SessionsController < ApplicationController
     @user = User.find_by(email: params[:user][:email])
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
-      redirect :'/events'
+      redirect :"/users/#{@user.id}"
     else
-      binding.pry
       @no_user = true unless @user
       erb :login
     end
@@ -22,7 +21,7 @@ class SessionsController < ApplicationController
 
   get '/signup' do
     if logged_in?
-      redirect :'/events'
+      redirect :"/users/#{current_user.id}"
     else
       erb :signup
     end
@@ -36,10 +35,6 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       redirect :"/users/#{@user.id}"
     end
-
-    ## Need to build routing for correct registration; so far only error-prone registrations are accounted for
-
-
 
   end
 
