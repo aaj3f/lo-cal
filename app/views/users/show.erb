@@ -10,6 +10,5 @@
 <h5><%= event.date_and_time.strftime("%A, %B %e -- %H:%M") %></h5>
 <h5>Location: <%= event.location %></h5>
 <h5>Your Response: <%= Rsvp.find_by(user_id: @user.id, event_id: event.id).status %></h5>
-<p><%= event.description %></p>
 <% end %>
 <% end %>

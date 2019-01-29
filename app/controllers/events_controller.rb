@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  
+
   get '/events' do
     if logged_in?
       @events = Event.all
@@ -9,5 +9,16 @@ class EventsController < ApplicationController
     end
   end
 
+  get '/events/:id' do
+    @event = Event.find_by_id(params[:id])
+    if @event && logged_in?
+      erb :"/events/show"
+    elsif logged_in?
+      @no_event = true
+      erb :"/events/show"
+    else
+      redirect :"/"
+    end
+  end
 
 end

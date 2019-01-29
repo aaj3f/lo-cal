@@ -1,0 +1,12 @@
+<% if @no_event %>
+<!-- This will happen if there is no event with the id supplied to the controller -->
+<h1>Ruh-roh! We can't find any such event!</h1>
+<h3><a href="/events">Click Here</a> to return to our index of upcoming events!</h3>
+<% else %>
+<!-- Otherwise, this will be the successful view -->
+<h1><%= @event.name %></h1>
+<h3><%= "#{@event.date_and_time.strftime("%A, %B %e -- %H:%M")} @ #{@event.location}" %></h3>
+<h4><%= "Organized by #{@event.organizer}" %></h4>
+<br>
+<p><%= @event.description %></p>
+<% end %>
