@@ -7,4 +7,5 @@ end
 use EventsController
 use SessionsController
 use UsersController
+use RsvpsController
 run ApplicationController

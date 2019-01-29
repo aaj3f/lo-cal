@@ -7,6 +7,17 @@
 <h1><%= @event.name %></h1>
 <h3><%= "#{@event.date_and_time.strftime("%A, %B %e -- %H:%M")} @ #{@event.location}" %></h3>
 <h4><%= "Organized by #{@event.organizer}" %></h4>
+
+<!-- Want to add some control logic so that if someone has already RSVPd for this event, it shows a different form -->
+<form action="/rsvps" method="post">
+
+  RSVP: <input type="submit" name="rsvp" value="I'm going!">
+
+  <input type="submit" name="rsvp" value="I'm interested.">
+
+  <input type="submit" name="rsvp" value="I can't make it.">
+</form>
+
 <br>
 <p><%= @event.description %></p>
 <% end %>
