@@ -10,9 +10,12 @@ class SessionsController < ApplicationController
 
   post '/login' do
     @user = User.find_by(email: params[:user][:email])
-    if @user && @user.authenticate(params[:password])
+    if @user && @user.authenticate(params[:user][:password])
       session[:user_id] = @user.id
       redirect :"/users/#{@user.id}"
+    elsif @user && !(@user.authenticate(params[:user][:password]))
+      @user.errors.add(:password, "does not match our records.")
+      erb :login
     else
       @no_user = true unless @user
       erb :login
@@ -28,6 +31,7 @@ class SessionsController < ApplicationController
   end
 
   post '/signup' do
+    binding.pry
     @user = User.new(params[:user])
     if @user.already_a_user? || !(@user.save)
       erb :signup
@@ -35,7 +39,15 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       redirect :"/users/#{@user.id}"
     end
+  end
 
+  get '/logout' do
+    if logged_in?
+      session.clear
+      redirect :'/'
+    else
+      redirect :'/'
+    end
   end
 
 end
