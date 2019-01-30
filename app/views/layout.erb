@@ -1,48 +1,67 @@
-<!DOCTYPE html>
-<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
-<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
-<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<!doctype html>
+<html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>LoCal</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/stylesheets/main.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <link rel="stylesheet" href="/stylesheets/main.css" />
+    <title>loCal</title>
   </head>
   <body>
     <div class="wrapper">
-      <% if flash[:error] %>
-      <div class="alert alert-danger alert-dismissible fade show" role="alert" id="error-alert">
-        <strong><%= flash[:error] %></strong>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="/">LoCal</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/users/<%= current_user.id %>">Your Events</a>
+          </li>
+        </ul>
+        <span class="navbar-text">
+              <a href="/logout">Logout</a>
+            </span>
       </div>
-    <% end %>
-      <% if flash[:notice] %>
-        <div class="alert alert-success alert-dismissible fade show" role="alert" id="notice-alert">
-          <strong><%= flash[:notice] %></strong>
-        </div>
-        <script>
-          $("#notice-alert").fadeTo(2000, 500).slideUp(500, function(){
-          $("#notice-alert").slideUp(500);});
-        </script>
-      <% end %>
-        <%= yield %>
+    </nav>
 
-      <footer class="branding">
-        <small>&copy; 2019 <strong>LoCal</strong></small>
-      </footer>
+    <% if flash[:error] %>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert" id="error-alert">
+      <strong><%= flash[:error] %></strong>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
+    <% end %>
+    <% if flash[:notice] %>
+    <div class="alert alert-success alert-dismissible fade show" role="alert" id="notice-alert">
+      <strong><%= flash[:notice] %></strong>
+    </div>
+    <script>
+      $("#notice-alert").fadeTo(2000, 500).slideUp(500, function(){
+        $("#notice-alert").slideUp(500);});
+      </script>
+      <% end %>
+      <div class="mt-2">
+        <%= yield %>
+      </div>
 
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-    <!--[if lt IE 7]>
-      <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.2/CFInstall.min.js"></script>
-      <script>window.attachEvent("onload",function(){CFInstall.check({mode:"overlay"})})</script>
-    <![endif]-->
-  </body>
-</html>
+  </div>
+        <!-- Optional JavaScript -->
+      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    </body>
+  </html>

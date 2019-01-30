@@ -1,7 +1,6 @@
 class RsvpsController < ApplicationController
 
   post '/rsvps' do
-    binding.pry
     event = Event.find_by_id(params[:event])
     response = params[:rsvp]
     user = User.find_by_id(session[:user_id])
