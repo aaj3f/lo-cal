@@ -7,6 +7,7 @@ class RsvpsController < ApplicationController
     user = User.find_by_id(session[:user_id])
     if event && user && response && !(user.events.include?(event))
       rsvp = Rsvp.create(user_id: user.id, event_id: event.id, status: response)
+      flash[:notice] = 'We\'ve RSVP\'d you for this event!'
       redirect :"/events/#{event.id}"
     else
       redirect :"/events"
@@ -19,6 +20,7 @@ class RsvpsController < ApplicationController
     user = User.find_by_id(session[:user_id])
     if event && user && new_response && user.events.include?(event)
       Rsvp.find_by(user_id: user.id, event_id: event.id).update(status: new_response)
+      flash[:notice] = 'We\'ve updated your RSVP!'
       redirect :"/events/#{event.id}"
     else
       redirect :"/events"

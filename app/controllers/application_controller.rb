@@ -9,6 +9,8 @@ class ApplicationController < Sinatra::Base
     set :session_secret, ENV.fetch("SESSION_SECRET")
   end
 
+  use Rack::Flash
+
   get "/" do
     if logged_in?
       redirect :'/events'

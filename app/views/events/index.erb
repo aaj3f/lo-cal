@@ -4,7 +4,7 @@
   <li><h4><a href="/events/<%= event.id %>"><%= event.name %></a></h4></li>
   <ul>
     <li><%= "Organized by #{event.organizer}" %></li>
-    <li><%= "#{event.date_and_time.strftime("%A, %B %e -- %H:%M")}" %></li>
+    <li><%= "#{event.date_and_time.strftime("%A, %B %e -- %I:%M")}" %></li>
     <li><%= "Location: #{event.location}" %></li>
   </ul>
   <br>

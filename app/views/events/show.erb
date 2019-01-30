@@ -13,22 +13,23 @@
 <% response = Rsvp.find_by(user_id: current_user.id, event_id: @event.id).status %>
 <form action="/rsvps/<%= @event.id %>" method="post">
   <input type="hidden" id="hidden" name="_method" value="patch">
+  You've successfully RSVP'd to this event!<br>
   Do you want to update your RSVP for this event?<br>
-  <input type="radio" name="rsvp" value="accept" <%= "checked" if response == "accept" %>>I'm going!
+  <input type="radio" name="rsvp" value="accept" <%= "checked" if response == "accept" %>><span> I'm going!    </span>
 
-  <input type="radio" name="rsvp" value="interested" <%= "checked" if response == "interested" %>>I'm interested.
+  <input type="radio" name="rsvp" value="interested" <%= "checked" if response == "interested" %>><span> I'm interested.    </span>
 
-  <input type="radio" name="rsvp" value="decline" <%= "checked" if response == "decline" %>>I can't make it.
+  <input type="radio" name="rsvp" value="decline" <%= "checked" if response == "decline" %>><span> I can't make it.    </span>
   <input type="submit" value="Update my RSVP!">
 </form>
 <% else %>
 <form action="/rsvps" method="post">
   <input type="hidden" id="hidden" name="event" value="<%= @event.id %>">
-  RSVP: <button type="submit" name="rsvp" value="accept">I'm going!</button>
+  RSVP: <button type="button" name="rsvp" value="accept">I'm going!</button>
 
-  <button type="submit" name="rsvp" value="interested">I'm interested.</button>
+  <button type="button" name="rsvp" value="interested">I'm interested.</button>
 
-  <button type="submit" name="rsvp" value="decline">I can't make it.</button>
+  <button type="button" name="rsvp" value="decline">I can't make it.</button>
 </form>
 <% end %>
 
