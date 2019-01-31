@@ -5,7 +5,7 @@
 <% else %>
 <!-- Otherwise, this will be the successful view -->
 <h1><%= @event.name %></h1>
-<h3><%= "#{@event.date_and_time.strftime("%A, %B %e -- %H:%M")} @ #{@event.location}" %></h3>
+<h3><%= @event.date_and_time.strftime("%H:%M:%S") == "00:00:00" ? "#{@event.date_and_time.strftime("%A, %B %e")}" : "#{@event.date_and_time.strftime("%A, %B %e -- %I:%M%p")}" %><%= " @ #{@event.location}" %></h3>
 <h4><%= "Organized by #{@event.organizer}" %></h4>
 <br>
 <!-- Want to add some control logic so that if someone has already RSVPd for this event, it shows a different form -->
@@ -34,5 +34,5 @@
 <% end %>
 
 <br>
-<p><%= @event.description %></p>
+<p><%= @event.description ? @event.description : "Visit <a href=\"#{@event.event_url}\" target=\"_blank\">#{@event.name}</a> for more information about this event."%></p>
 <% end %>
