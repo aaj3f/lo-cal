@@ -5,10 +5,21 @@
 <h4>Please <a href="/events">visit the Events page</a> to find events you might enjoy.</h4>
 <% else %>
 <h3>Your Upcoming Events</h3>
-<% @user.events.each do |event| %>
-<h4><%= event.name %> organized by <%= event.organizer %></h4>
-<h5><%= event.date_and_time.strftime("%A, %B %e -- %H:%M") %></h5>
-<h5>Location: <%= event.location %></h5>
-<h5>Your Response: <%= Rsvp.find_by(user_id: @user.id, event_id: event.id).status %></h5>
+<ul>
+<% @user_events_by_date.each do |date, event_array| %>
+<h4> <%= date %> </h4>
+<ul>
+  <% event_array.each do |event| %>
+  <li><h4><a href="/events/<%= event.id %>"><%= event.name %></a></h4></li>
+  <ul>
+    <li><%= "Organized by #{event.organizer}" %></li>
+    <li><%= event.date_and_time.strftime("%H:%M:%S") == "00:00:00" ? "#{event.date_and_time.strftime("%A, %B %e")}" : "#{event.date_and_time.strftime("%A, %B %e -- %I:%M%p")}" %></li>
+    <li><%= "Location: #{event.location}" %></li>
+    <li>Your RSVP: <%= Rsvp.find_by(user_id: current_user.id, event_id: event.id).print_status %></li>
+  </ul>
+  <br>
+  <% end %>
+</ul>
 <% end %>
+</ul>
 <% end %>
