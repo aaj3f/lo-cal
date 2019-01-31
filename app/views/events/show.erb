@@ -11,7 +11,8 @@
 <!-- Want to add some control logic so that if someone has already RSVPd for this event, it shows a different form -->
 <% if current_user.events.include?(@event) %>
 <% response = Rsvp.find_by(user_id: current_user.id, event_id: @event.id).status %>
-<form action="/rsvps/<%= @event.id %>" method="post">
+<div>
+<form class="update-and-delete" action="/rsvps/<%= @event.id %>" method="post">
   <input type="hidden" id="hidden" name="_method" value="patch">
   You've successfully RSVP'd to this event!<br>
   Do you want to update your RSVP for this event?<br>
@@ -22,6 +23,12 @@
   <input type="radio" name="rsvp" value="decline" <%= "checked" if response == "decline" %>><span> I can't make it.    </span>
   <input type="submit" value="Update my RSVP!">
 </form>
+<span> ...or... </span>
+<form class="update-and-delete" action="/rsvps/<%= @event.id %>" method="post">
+  <input type="hidden" id="hidden" name="_method" value="delete">
+  <input type="submit" value="Delete my RSVP entirely!">
+</form>
+</div>
 <% else %>
 <form action="/rsvps" method="post">
   <input type="hidden" id="hidden" name="event" value="<%= @event.id %>">

@@ -2,7 +2,6 @@ class EventsController < ApplicationController
 
   get '/events' do
     if logged_in?
-      @events = Event.all
       @events_by_date = Event.all.group_by {|event| event.date_and_time.strftime("%y-%m-%d")}.sort.to_h
       erb :'/events/index'
     else
