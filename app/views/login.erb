@@ -8,12 +8,4 @@
 
   <input type="submit" class="btn btn-lg btn-primary btn-block active" value="Log In">
   <p class="mt-5 mb-3 text-muted">&copy; 2019</p>
-
-  <% if @user || @no_user %>
-  <h4><%= "Uh-oh! A few errors to resolve: " %></h4>
-  <ul>
-    <li><%= @no_user ? "That email address is not registered to a current user." : @user.errors.full_messages.first %></li>
-  </ul>
-  <% end %>
-
 </form>

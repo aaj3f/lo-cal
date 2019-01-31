@@ -12,11 +12,5 @@
 
   <input type="submit" class="btn btn-lg btn-primary btn-block active" value="Sign Up">
   <p class="mt-5 mb-3 text-muted">&copy; 2019</p>
-  <% if @user %>
-  <h4><%= "Uh-oh! A few errors to resolve: " unless @user.errors.full_messages.empty? %></h4>
-  <ul><% @user.errors.full_messages.each do |error_string| %>
-  <li><%= error_string %></li>
-  <% end %></ul>
-  <% end %>
 </form>
 </div>
