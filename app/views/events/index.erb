@@ -1,12 +1,18 @@
 <h2>Upcoming Events</h2>
+
 <ul>
-<% @events.each do |event| %>
+<% @events_by_date.each do |date, event_array| %>
+<h2> <%= date %> </h2>
+<ul>
+  <% event_array.each do |event| %>
   <li><h4><a href="/events/<%= event.id %>"><%= event.name %></a></h4></li>
   <ul>
     <li><%= "Organized by #{event.organizer}" %></li>
-    <li><%= "#{event.date_and_time.strftime("%A, %B %e -- %I:%M")}" %></li>
+    <li><%= "#{event.date_and_time.strftime("%A, %B %e -- %I:%M%p")}" %></li>
     <li><%= "Location: #{event.location}" %></li>
   </ul>
   <br>
+  <% end %>
+</ul>
 <% end %>
 </ul>
