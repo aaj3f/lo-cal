@@ -8,7 +8,7 @@
   <li><h4><a href="/events/<%= event.id %>"><%= event.name %></a></h4></li>
   <ul>
     <li><%= "Organized by #{event.organizer}" %></li>
-    <li><%= "#{event.date_and_time.strftime("%A, %B %e -- %I:%M%p")}" %></li>
+    <li><%= event.date_and_time.strftime("%H:%M:%S") == "00:00:00" ? "#{event.date_and_time.strftime("%A, %B %e")}" : "#{event.date_and_time.strftime("%A, %B %e -- %I:%M%p")}" %></li>
     <li><%= "Location: #{event.location}" %></li>
   </ul>
   <br>
