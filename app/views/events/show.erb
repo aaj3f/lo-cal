@@ -13,21 +13,21 @@
 <% if current_user.events.include?(@event) %>
 <% response = Rsvp.find_by(user_id: current_user.id, event_id: @event.id).status %>
 <div class="form-div">
+  <p class="text-center">You've successfully RSVP'd to this event!<br>Do you want to update your RSVP for this event?</p>
 <form class="update-and-delete" action="/rsvps/<%= @event.id %>" method="post">
   <input type="hidden" id="hidden" name="_method" value="patch">
-  You've successfully RSVP'd to this event!<br>
-  Do you want to update your RSVP for this event?<br>
-  <input type="radio" name="rsvp" value="accept" <%= "checked" if response == "accept" %>><span> I'm going!    </span>
-
-  <input type="radio" name="rsvp" value="interested" <%= "checked" if response == "interested" %>><span> I'm interested.    </span>
-
-  <input type="radio" name="rsvp" value="decline" <%= "checked" if response == "decline" %>><span> I can't make it.    </span>
-  <input type="submit" value="Update my RSVP!">
+  <select class="form-control" name="rsvp">
+    <option value="accept" <%= "selected" if response == "accept" %>>I'm going!</option>
+    <option value="interested" <%= "selected" if response == "interested" %>>I'm interested.</option>
+    <option value="decline" <%= "selected" if response == "decline" %>>I can't make it.</option>
+  </select>
+  
+  <input class="btn btn-primary" type="submit" value="Update my RSVP!">
 </form>
 <span> ...or... </span>
 <form class="update-and-delete" action="/rsvps/<%= @event.id %>" method="post">
   <input type="hidden" id="hidden" name="_method" value="delete">
-  <input type="submit" value="Delete my RSVP entirely!">
+  <input class="btn btn-primary" type="submit" value="Delete my RSVP entirely!">
 </form>
 </div>
 <% else %>
