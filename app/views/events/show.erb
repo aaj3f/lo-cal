@@ -16,18 +16,17 @@
   <p class="text-center">You've successfully RSVP'd to this event!<br>Do you want to update your RSVP for this event?</p>
 <form class="update-and-delete" action="/rsvps/<%= @event.id %>" method="post">
   <input type="hidden" id="hidden" name="_method" value="patch">
-  <select class="form-control" name="rsvp">
+  <select class="form-control mb-1" name="rsvp">
     <option value="accept" <%= "selected" if response == "accept" %>>I'm going!</option>
     <option value="interested" <%= "selected" if response == "interested" %>>I'm interested.</option>
     <option value="decline" <%= "selected" if response == "decline" %>>I can't make it.</option>
   </select>
-  
-  <input class="btn btn-primary" type="submit" value="Update my RSVP!">
+  <input class="btn btn-primary mt-1" type="submit" value="Update my RSVP!">
 </form>
-<span> ...or... </span>
-<form class="update-and-delete" action="/rsvps/<%= @event.id %>" method="post">
+
+<form class="update-and-delete text-center" action="/rsvps/<%= @event.id %>" method="post">
   <input type="hidden" id="hidden" name="_method" value="delete">
-  <input class="btn btn-primary" type="submit" value="Delete my RSVP entirely!">
+  <input class="btn btn-warning mb-5 ml-2 py-2" type="submit" value="Delete my RSVP entirely!">
 </form>
 </div>
 <% else %>
