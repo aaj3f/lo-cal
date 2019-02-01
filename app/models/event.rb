@@ -17,4 +17,8 @@ class Event < ActiveRecord::Base
     end
   end
 
+  def display_organizer
+    "<li>Organized by #{self.organizer}</li>" if self.organizer != self.location
+  end
+
 end

@@ -6,7 +6,8 @@
 <!-- Otherwise, this will be the successful view -->
 <h1><%= @event.name %></h1>
 <h3><%= @event.display_date_and_time %></h3>
-<h4><%= "Organized by #{@event.organizer}" %></h4>
+<h4><%= @event.display_organizer %></h4>
+<h4>Located at <%= @event.location %></h4>
 <br>
 <!-- Want to add some control logic so that if someone has already RSVPd for this event, it shows a different form -->
 <% if current_user.events.include?(@event) %>

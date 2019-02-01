@@ -7,9 +7,9 @@
   <% event_array.each do |event| %>
   <li><h4><a href="/events/<%= event.id %>"><%= event.name %></a></h4></li>
   <ul>
-    <li><%= "Organized by #{event.organizer}" %></li>
+    <%= event.display_organizer %>
     <li><%= event.display_date_and_time %></li>
-    <li><%= "Location: #{event.location}" %></li>
+    <li><%= "Located @ #{event.location}" %></li>
     <%= event.display_rsvps(current_user) %>
   </ul>
   <br>
