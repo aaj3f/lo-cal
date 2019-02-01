@@ -24,7 +24,7 @@ class EventsScraper
       else
         inner_hash = hash["#{raw_array[(index - 1)]}/1"]
         inner_hash[:name] = item["name"]
-        inner_hash[:date_and_time] = item["startDate"]
+        inner_hash[:date_and_time] = DateTime.parse(item["startDate"])
         inner_hash[:location] = item["location"]["name"]
         inner_hash[:organizer] = "The Ramkat"
         inner_hash[:description] = nil
@@ -50,7 +50,7 @@ class EventsScraper
       inner_doc.css('ul.performance__schedule li').each.with_index(1) do |node, index|
         hash["#{url}/#{index}"] = {}
         hash["#{url}/#{index}"][:name] = inner_doc.css('div.wrap h1').text
-        hash["#{url}/#{index}"][:date_and_time] = node.text.strip.gsub(/\s+/, " ")
+        hash["#{url}/#{index}"][:date_and_time] = DateTime.parse(node.text.strip.gsub(/\s+/, " "))
         hash["#{url}/#{index}"][:location] = inner_doc.css('span.event__location__icon + strong').text
         hash["#{url}/#{index}"][:organizer] = "UNCSA"
         if inner_doc.css('p.p--intro span:first-child').first.values.first

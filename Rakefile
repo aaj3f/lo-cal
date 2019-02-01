@@ -5,7 +5,9 @@ require 'sinatra/activerecord/rake'
 
 desc "Updates Events table in database by scraping several websites"
 task :scrape do
+  puts "There were #{Event.all.size} events in our database."
   EventsScraper.new.call
+  puts "After adding new events, there are #{Event.all.size}"
 end
 
 desc "Finds Events with dates before today and removes from database"
