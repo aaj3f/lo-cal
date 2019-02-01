@@ -11,7 +11,7 @@
 <!-- Want to add some control logic so that if someone has already RSVPd for this event, it shows a different form -->
 <% if current_user.events.include?(@event) %>
 <% response = Rsvp.find_by(user_id: current_user.id, event_id: @event.id).status %>
-<div>
+<div class="form-div">
 <form class="update-and-delete" action="/rsvps/<%= @event.id %>" method="post">
   <input type="hidden" id="hidden" name="_method" value="patch">
   You've successfully RSVP'd to this event!<br>
@@ -30,6 +30,7 @@
 </form>
 </div>
 <% else %>
+<div class="form-div">
 <form action="/rsvps" method="post">
   <input type="hidden" id="hidden" name="event" value="<%= @event.id %>">
   RSVP: <button type="submit" name="rsvp" value="accept">I'm going!</button>
@@ -38,8 +39,11 @@
 
   <button type="submit" name="rsvp" value="decline">I can't make it.</button>
 </form>
+</div>
 <% end %>
 
 <br>
-<p><%= @event.description ? @event.description : "Visit <a href=\"#{@event.event_url}\" target=\"_blank\">#{@event.name}</a> for more information about this event."%></p>
+<p><%= @event.description&.gsub("\n", "<br>") %></p>
+<br>
+<p><%= "Visit <a href=\"#{@event.event_url}\" target=\"_blank\">#{@event.name}</a> for more information about this event." %></p>
 <% end %>

@@ -1,3 +1,10 @@
 form.update-and-delete {
   display: inline-block;
 }
+
+div.form-div {
+  display: inline-block;
+  padding: 16px 20px;
+  border: 1px solid gray;
+  border-radius: 8px;
+}

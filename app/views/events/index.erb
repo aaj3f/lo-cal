@@ -8,12 +8,9 @@
   <li><h4><a href="/events/<%= event.id %>"><%= event.name %></a></h4></li>
   <ul>
     <li><%= "Organized by #{event.organizer}" %></li>
-    <li><%= event.date_and_time.strftime("%H:%M:%S") == "00:00:00" ? "#{event.date_and_time.strftime("%A, %B %e")}" : "#{event.date_and_time.strftime("%A, %B %e -- %I:%M%p")}" %></li>
+    <li><%= event.display_date_and_time %></li>
     <li><%= "Location: #{event.location}" %></li>
-    <% unless event.rsvps.size <= 1 %>
-    <% user = event.rsvps.sample.user %>
-    <li><%= "#{user == current_user ? "You" : "#{user.first_name}"} & #{event.rsvps.size - 1} #{event.rsvps.size > 2 ? "others" : "other user"} have RSVP'd!" %></li>
-    <% end %>
+    <%= event.display_rsvps(current_user) %>
   </ul>
   <br>
   <% end %>
