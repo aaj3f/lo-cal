@@ -31,7 +31,7 @@
 </div>
 <% else %>
 <div class="form-div">
-<form action="/rsvps" method="post">
+<form class = "my-2" action="/rsvps" method="post">
   <input type="hidden" id="hidden" name="event" value="<%= @event.id %>">
   <button class="btn btn-primary mx-1 my-1 col-sm-auto" type="submit" name="rsvp" value="accept">I'm going!</button>
 

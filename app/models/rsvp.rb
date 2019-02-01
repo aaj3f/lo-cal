@@ -18,9 +18,9 @@ class Rsvp < ActiveRecord::Base
     when "accept"
       "<span class=\"badge badge-pill badge-success\">You're Going!</span>"
     when "interested"
-      "<span class=\"badge badge-pill badge-info\">You're Interested</span>"
+      "<span class=\"badge badge-pill badge-warning\">You're Interested</span>"
     when "decline"
-      "<span class=\"badge badge-pill badge-warning\">You Declined</span>"
+      "<span class=\"badge badge-pill badge-danger\">You Declined</span>"
     end
   end
 end

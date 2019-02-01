@@ -31,7 +31,7 @@ class ApplicationController < Sinatra::Base
     def simplify_date(date)
       date_object = DateTime.parse(date)
       if date_object == Date.today
-        "Tonight"
+        "Today"
       elsif date_object == Date.tomorrow
         "Tomorrow"
       else
