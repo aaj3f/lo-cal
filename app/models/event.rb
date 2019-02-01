@@ -21,4 +21,10 @@ class Event < ActiveRecord::Base
     "<li>Organized by #{self.organizer}</li>" if self.organizer != self.location
   end
 
+  def self.index_by_date
+    self.all.group_by {|event| event.date_and_time.strftime("%y-%m-%d")}.sort.to_h.delete_if do |date_key, value|
+      Date.parse(date_key) < Date.today
+    end
+  end
+
 end
