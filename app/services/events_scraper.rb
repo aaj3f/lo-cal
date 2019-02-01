@@ -67,7 +67,7 @@ class EventsScraper
 
   def create_events(creation_hash)
     creation_hash.each do |url_key, event_data|
-      Event.create(event_data) unless Event.find_by(event_url: event_data[:event_url], date_and_time: event_data[:date_and_time])
+      Event.create(event_data) unless Event.find_by(event_url: event_data[:event_url], date_and_time: event_data[:date_and_time]) || (event_data[:date_and_time] < Date.today)
     end
   end
 
