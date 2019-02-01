@@ -12,4 +12,15 @@ class Rsvp < ActiveRecord::Base
       "\"I won't be attending.\""
     end
   end
+
+  def badge
+    case self.status
+    when "accept"
+      "<span class=\"badge badge-pill badge-success\">You're Going!</span>"
+    when "interested"
+      "<span class=\"badge badge-pill badge-info\">You're Interested</span>"
+    when "decline"
+      "<span class=\"badge badge-pill badge-warning\">You Declined</span>"
+    end
+  end
 end

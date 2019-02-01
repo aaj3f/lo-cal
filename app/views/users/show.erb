@@ -5,6 +5,7 @@
 <h4>Please <a href="/events">visit the Events page</a> to find events you might enjoy.</h4>
 <% else %>
 <h3>Your Upcoming Events</h3>
+<br>
 <ul>
 <% @user_events_by_date.each do |date, event_array| %>
 <h4> <%= simplify_date(date) %> </h4>
@@ -15,8 +16,7 @@
     <li><%= "Organized by #{event.organizer}" %></li>
     <li><%= event.display_date_and_time %></li>
     <li><%= "Location: #{event.location}" %></li>
-    <%= event.find_rsvp_by_user(current_user).badge %>
-    <li>Your RSVP: <%= Rsvp.find_by(user_id: current_user.id, event_id: event.id).print_status %></li>
+    <li><%= event.find_rsvp_by_user(current_user).badge %></li>
   </ul>
   <br>
   <% end %>
