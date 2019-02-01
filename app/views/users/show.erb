@@ -7,7 +7,7 @@
 <h3>Your Upcoming Events</h3>
 <ul>
 <% @user_events_by_date.each do |date, event_array| %>
-<h4> <%= DateTime.parse(date).strftime("%A &#8212; %b %e") %> </h4>
+<h4> <%= simplify_date(date) %> </h4>
 <ul>
   <% event_array.each do |event| %>
   <li><h4><a href="/events/<%= event.id %>"><%= event.name %></a></h4></li>
