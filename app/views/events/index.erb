@@ -2,7 +2,7 @@
 
 <ul>
 <% @events_by_date.each do |date, event_array| %>
-<h2> <%= DateTime.parse(date).strftime("%A &#8212; %b %e") %> </h2>
+<h2> <%= simplify_date(date) %> </h2>
 <ul>
   <% event_array.each do |event| %>
   <li><h4><a href="/events/<%= event.id %>"><%= event.name %></a></h4></li>

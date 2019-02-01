@@ -28,6 +28,17 @@ class ApplicationController < Sinatra::Base
       @user ||= User.find_by_id(session[:user_id]) if session[:user_id]
     end
 
+    def simplify_date(date)
+      date_object = DateTime.parse(date)
+      if date_object == Date.today
+        "Tonight"
+      elsif date_object == Date.tomorrow
+        "Tomorrow"
+      else
+        date_object.strftime("%A &#8212; %b %e")
+      end
+    end
+
   end
 
 end
