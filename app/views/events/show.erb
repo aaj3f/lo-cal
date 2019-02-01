@@ -34,11 +34,11 @@
 <div class="form-div">
 <form action="/rsvps" method="post">
   <input type="hidden" id="hidden" name="event" value="<%= @event.id %>">
-  RSVP: <button type="submit" name="rsvp" value="accept">I'm going!</button>
+  <button class="btn btn-primary mx-1 my-1 col-sm-auto" type="submit" name="rsvp" value="accept">I'm going!</button>
 
-  <button type="submit" name="rsvp" value="interested">I'm interested.</button>
+  <button class="btn btn-primary mx-1 my-1 col-sm-auto" type="submit" name="rsvp" value="interested">I'm interested.</button>
 
-  <button type="submit" name="rsvp" value="decline">I can't make it.</button>
+  <button class="btn btn-primary mx-1 my-1 col-sm-auto" type="submit" name="rsvp" value="decline">I can't make it.</button>
 </form>
 </div>
 <% end %>
