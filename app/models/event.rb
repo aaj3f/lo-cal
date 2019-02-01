@@ -13,7 +13,7 @@ class Event < ActiveRecord::Base
     if self.date_and_time.strftime("%H:%M:%S") == "00:00:00"
       "#{self.date_and_time.strftime("%A, %B %e")}"
     else
-      "#{self.date_and_time.strftime("%A, %B %e -- %I:%M%p")}"
+      "#{self.date_and_time.strftime("%A, %B %e &#8212 %I:%M%p")}"
     end
   end
 
