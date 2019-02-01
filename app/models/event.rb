@@ -4,7 +4,7 @@ class Event < ActiveRecord::Base
 
   def display_rsvps(current_user)
     if current_user.events.include?(self) && self.check_rsvp_status_by_user(current_user) == "decline"
-      "<li><span class=\"badge badge-danger\">You've decided not to attend.</span></li>"
+      "<li><span class=\"badge badge-warning\">You've decided not to attend.</span></li>"
     elsif self.rsvps.size > 0
       if current_user.events.include?(self)
         user_example, badge_class = "You", "badge-success"
