@@ -27,4 +27,8 @@ class Event < ActiveRecord::Base
     end
   end
 
+  def find_rsvp_by_user(current_user)
+    Rsvp.find_by(user_id: current_user.id, event_id: self.id)
+  end
+
 end
