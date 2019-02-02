@@ -38,7 +38,7 @@ class EventsScraper
   end
 
   def stevens_scraper(creation_hash, events_url)
-    base_url = events_url.delete_suffix("/performances/index.aspx")
+    base_url = events_url.chomp("/performances/index.aspx")
 
     doc = Nokogiri::HTML(open(events_url))
 
