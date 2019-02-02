@@ -49,7 +49,7 @@ GEM
     mustermann (1.0.3)
     nokogiri (1.10.1)
       mini_portile2 (~> 2.4.0)
-    pg (1.1.4)
+    pg (0.21.0)
     pry (0.12.2)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
@@ -128,7 +128,7 @@ DEPENDENCIES
   database_cleaner!
   foreman
   nokogiri
-  pg
+  pg (~> 0.20)
   pry
   rack-flash3
   rack-test
