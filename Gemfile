@@ -3,6 +3,7 @@ source 'http://rubygems.org'
 gem 'sinatra'
 gem 'activerecord', '~> 4.2', '>= 4.2.6', :require => 'active_record'
 gem 'sinatra-activerecord', :require => 'sinatra/activerecord'
+gem 'pg'
 gem 'rake'
 gem 'require_all'
 gem 'thin'
@@ -11,6 +12,7 @@ gem 'rack-flash3', :require => 'rack-flash'
 gem 'nokogiri'
 gem 'rails_12factor'
 gem 'foreman'
+
 
 group :development do
   gem 'sqlite3'
