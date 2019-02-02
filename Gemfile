@@ -9,6 +9,8 @@ gem 'thin'
 gem 'bcrypt'
 gem 'rack-flash3', :require => 'rack-flash'
 gem 'nokogiri'
+gem 'rails_12factor'
+gem 'foreman'
 
 group :development do
   gem 'sqlite3'
