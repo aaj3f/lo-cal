@@ -14,4 +14,10 @@ class User < ActiveRecord::Base
     flag
   end
 
+  def display_events_by_date
+    self.events.group_by {|event| event.date_and_time.strftime("%y-%m-%d")}.sort.to_h.delete_if do |date_key, value|
+      Date.parse(date_key) < Date.today
+    end
+  end
+
 end
