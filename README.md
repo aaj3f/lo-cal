@@ -4,7 +4,7 @@ lo-Cal: A locally curated calendar for your town! lo-Cal is a Ruby (Sinatra) CMS
 
 ## Objectives
 
-1. To build a truly useful app, at first for the Winston-Salem, NC community, that broadcasts local events and provides an as-yet unavailable events aggregator to our community's fabric and to support local businesses.
+1. To build a truly useful app, at first for the Winston-Salem, NC community, that broadcasts local events and provides an as-yet unavailable events aggregator to contribute to our community's fabric and to support local businesses.
 2. To persist data vis-a-vis SQL database tables, relationally-mapped to model objects through ActiveRecord
 3. To practice MVC design architecture with Create-Read-Update-Destroy capabilities & RESTful routing
 4. To practice validating and authenticating users, to protect their identity & the security of the app.
