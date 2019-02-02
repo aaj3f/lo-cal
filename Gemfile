@@ -10,6 +10,7 @@ gem 'bcrypt'
 gem 'rack-flash3', :require => 'rack-flash'
 gem 'nokogiri'
 gem 'foreman'
+gem 'dotenv'
 
 group :production do
   gem 'pg', '~> 0.20'
