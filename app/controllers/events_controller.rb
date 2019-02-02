@@ -5,6 +5,7 @@ class EventsController < ApplicationController
       @events_by_date = Event.index_by_date
       erb :'/events/index'
     else
+      flash[:error] = "Please first log in or sign up to begin!"
       redirect :'/'
     end
   end
@@ -14,9 +15,10 @@ class EventsController < ApplicationController
     if @event && logged_in?
       erb :"/events/show"
     elsif logged_in?
-      @no_event = true
-      erb :"/events/show"
+      flash[:error] = "No such event exists."
+      redirect :'/'
     else
+      flash[:error] = "Please first log in or sign up to begin!"
       redirect :"/"
     end
   end

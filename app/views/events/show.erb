@@ -1,9 +1,3 @@
-<% if @no_event %>
-<!-- This will happen if there is no event with the id supplied to the controller -->
-<h1>Ruh-roh! We can't find any such event!</h1>
-<h3><a href="/events">Click Here</a> to return to our index of upcoming events!</h3>
-<% else %>
-<!-- Otherwise, this will be the successful view -->
 <h1><%= @event.name %></h1>
 <h3><%= @event.display_date_and_time %></h3>
 <h4><%= @event.display_organizer %></h4>
@@ -48,4 +42,3 @@
 <p><%= @event.description&.gsub(/\n+/, "<br><br>") %></p>
 <br>
 <p><%= "Visit <a href=\"#{@event.event_url}\" target=\"_blank\">#{@event.name}</a> for more information about this event." %></p>
-<% end %>
