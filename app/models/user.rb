@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
 
   def already_a_user?
     flag = !!User.find_by(email: self.email)
-    errors.add(:email, "already registered to an existing user.") if flag
+    self.errors.add(:email, "already registered to an existing user.") if flag
     flag
   end
 
