@@ -1,6 +1,9 @@
-# lo-Cal
+# lo-cal
 
-lo-Cal: A locally curated calendar for your town! lo-Cal is a Ruby (Sinatra) CMS app following RESTful MVC design conventions.
+http://lo-cal.herokuapp.com/
+
+lo-cal is a locally-driven calendar for shows and events around Winston-Salem, NC.
+Discover & keep track of small-venue shows, special screenings, and more.
 
 ## Objectives
 
