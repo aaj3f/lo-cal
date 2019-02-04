@@ -1,6 +1,6 @@
 <h2>Welcome, <%= @user.first_name.capitalize %>!</h2>
 
-<% if @user.events.empty? %>
+<% if @user.events.empty?  || @user.events.all?{|event|event.date_and_time < Date.today} %>
 <div class="text-center mt-5">
 <h4>You haven't registered interest in any events.</h4>
 <p><a href="/events" class="btn btn-lg btn-secondary mt-2">Browse Upcoming Events</a></p>
