@@ -1,14 +1,14 @@
 <h1><%= @event.name %></h1>
 <h3><%= @event.display_date_and_time %></h3>
 <h4><%= @event.display_organizer %></h4>
-<h4>Located at <%= @event.location %></h4>
-<br>
-<!-- Want to add some control logic so that if someone has already RSVPd for this event, it shows a different form -->
+<h4>Located at <%= @event.location %></h4><br>
 <% if current_user.events.include?(@event) %>
+
 <% response = Rsvp.find_by(user_id: current_user.id, event_id: @event.id).status %>
 <div class="form-div">
   <p class="text-center mt-3 mb-1">You've successfully RSVP'd to this event!<br>Do you want to update your RSVP for this event?</p>
 <div class="row">
+
 <form class="update-and-delete col-sm text-center my-3" action="/rsvps/<%= @event.id %>" method="post">
   <input type="hidden" id="hidden" name="_method" value="patch">
   <select class="form-control" name="rsvp" autofocus>
@@ -23,9 +23,12 @@
   <input type="hidden" id="hidden" name="_method" value="delete">
   <input class="btn btn-warning my-2 ml-2 py-2" type="submit" value="Delete my RSVP entirely!">
 </form>
+
 </div>
 </div>
+
 <% else %>
+
 <div class="form-div mb-4">
 <form class = "my-2" action="/rsvps" method="post">
   <input type="hidden" id="hidden" name="event" value="<%= @event.id %>">
@@ -36,9 +39,9 @@
   <button class="btn btn-primary mx-1 my-1 col-sm-auto" type="submit" name="rsvp" value="decline">I can't make it.</button>
 </form>
 </div>
+
 <% end %>
 
 <br>
-<p><%= @event.description&.gsub(/\n+/, "<br><br>") %></p>
-<br>
+<p><%= @event.description&.gsub(/\n+/, "<br><br>") %></p><br>
 <p><%= "Visit <a href=\"#{@event.event_url}\" target=\"_blank\">#{@event.name}</a> for more information about this event." %></p>

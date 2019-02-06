@@ -1,28 +1,30 @@
 <h2>Welcome, <%= @user.first_name.capitalize %>!</h2>
 
 <% if @user.events.empty?  || @user.events.all?{|event|event.date_and_time < Date.today} %>
+
 <div class="text-center mt-5">
-<h4>You haven't registered interest in any events.</h4>
-<p><a href="/events" class="btn btn-lg btn-secondary mt-2">Browse Upcoming Events</a></p>
+  <h4>You haven't registered interest in any events.</h4>
+  <p><a href="/events" class="btn btn-lg btn-secondary mt-2">Browse Upcoming Events</a></p>
 </div>
+
 <% else %>
-<h3>Your Upcoming Events</h3>
-<br>
+
+<h3>Your Upcoming Events</h3><br>
 <ul>
-<% @user_events_by_date.each do |date, event_array| %>
-<h4> <%= simplify_date(date) %> </h4>
-<ul>
-  <% event_array.each do |event| %>
-  <li><h4><a href="/events/<%= event.id %>"><%= event.name %></a></h4></li>
+  <% @user_events_by_date.each do |date, event_array| %>
+  <h4> <%= simplify_date(date) %> </h4>
   <ul>
-    <li><%= "Organized by #{event.organizer}" %></li>
-    <li><%= event.display_date_and_time %></li>
-    <li><%= "Location: #{event.location}" %></li>
-    <li><%= event.find_rsvp_by_user(current_user).badge %></li>
+    <% event_array.each do |event| %>
+    <li><h4><a href="/events/<%= event.id %>"><%= event.name %></a></h4></li>
+    <ul>
+      <li><%= "Organized by #{event.organizer}" %></li>
+      <li><%= event.display_date_and_time %></li>
+      <li><%= "Location: #{event.location}" %></li>
+      <li><%= event.find_rsvp_by_user(current_user).badge %></li>
+    </ul><br>
+    <% end %>
   </ul>
-  <br>
   <% end %>
 </ul>
-<% end %>
-</ul>
+
 <% end %>
