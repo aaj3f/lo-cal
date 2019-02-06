@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
 
+  # -- READ (#Index) --
   get '/events' do
     if logged_in?
       @events_by_date = Event.index_by_date
@@ -10,6 +11,7 @@ class EventsController < ApplicationController
     end
   end
 
+  # -- READ (#Show) -- 
   get '/events/:id' do
     @event = Event.find_by_id(params[:id])
     if @event && logged_in?

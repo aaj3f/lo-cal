@@ -1,5 +1,6 @@
 class RsvpsController < ApplicationController
 
+  # -- CREATE --
   post '/rsvps' do
     event = Event.find_by_id(params[:event])
     response = params[:rsvp]
@@ -13,6 +14,7 @@ class RsvpsController < ApplicationController
     end
   end
 
+  # -- UPDATE --
   patch '/rsvps/:id' do
     event = Event.find_by_id(params[:id])
     new_response = params[:rsvp]
@@ -26,6 +28,7 @@ class RsvpsController < ApplicationController
     end
   end
 
+  # -- DESTROY --
   delete '/rsvps/:id' do
     event = Event.find_by_id(params[:id])
     if event && logged_in? && @user.events.include?(event)
